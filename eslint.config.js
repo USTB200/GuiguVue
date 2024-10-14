@@ -6,6 +6,7 @@ import pluginVue from "eslint-plugin-vue";
 
 export default [
   {files: ["**/*.{js,mjs,cjs,ts,vue}"]},
+  'vue/multi-word-component-names','off',
   {languageOptions: { globals: globals.browser }},
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
