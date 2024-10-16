@@ -1,9 +1,10 @@
 // 登录接口ts类型
-export interface loginFormData {
+export interface loginForm {
     username: string,
     password: string
 }
 interface dataType{
+    message: string | undefined
     token:string
 }
 // 接口返回数据

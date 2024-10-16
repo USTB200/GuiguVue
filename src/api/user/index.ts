@@ -4,7 +4,7 @@ import request from '@/utils/request'
 
 import type {
 
-    loginFormData,
+    loginForm,
 
     loginResponseData,
 
@@ -16,15 +16,15 @@ import type {
 
 enum API {
 
-    LOGIN_URL = '/admin/acl/index/login',
+    LOGIN_URL = '/user/login',
 
-    USERINFO_URL = '/admin/acl/index/info',
+    USERINFO_URL = '/user/info',
 
-    LOGOUT_URL = '/admin/acl/index/logout',
+    LOGOUT_URL = '/user/logout',
 
 }
 //登录接口
-export const reqLogin = (data: loginFormData) =>
+export const reqLogin = (data: loginForm) =>
     request.post<any, loginResponseData>(API.LOGIN_URL, data)
 //获取用户信息
 

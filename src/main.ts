@@ -3,6 +3,7 @@ import App from '@/App.vue'
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css'
 import axios from 'axios'
+import pinia from './store';
 import router from './router'
 // 配置element-plus国际化
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
@@ -28,6 +29,8 @@ app.use(gloablComponent);
 // })
 // 注册模版路由
 app.use(router);
+// 安装仓库
+app.use(pinia);
 // 将应用挂载到挂载点上
 app.mount('#app')
 

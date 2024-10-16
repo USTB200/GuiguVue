@@ -16,7 +16,7 @@ el-col是24份的，在此左右分为了12份。我们在右边放置我们的�
                             show-password></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button class="login_btn" type="primary" size="default">
+                        <el-button :loading="loading" class="login_btn" type="primary" size="default" @click="login">
                             登录
                         </el-button>
                     </el-form-item>
@@ -28,9 +28,46 @@ el-col是24份的，在此左右分为了12份。我们在右边放置我们的�
 
 <script setup lang="ts">
 import { User, Lock } from '@element-plus/icons-vue'
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
+import { useRouter } from 'vue-router';
+import useUserStore from '@/store/modules/user';
+import { ElNotification } from 'element-plus';
+let useStore = useUserStore();
+let $router = useRouter();
+let loading = ref(false);
 //收集账号与密码数据
 let loginForm = reactive({ username: 'admin', password: '111111' })
+//登录按钮的回调
+const login = async () => {
+    //按钮加载效果
+    loading.value = true
+    //点击登录按钮以后干什么
+    //通知仓库发起请求
+    //请求成功->路由跳转
+    //请求失败->弹出登陆失败信息
+    try {
+        //try catch 也可以书写.then语法
+        await useStore.userLogin(loginForm)
+        //编程式导航跳转到展示数据的首页（成功跳转）
+        $router.push('/')
+        //登录成功的提示信息
+        ElNotification({
+            type: 'success',
+            message: '登录成功！',
+        })
+        //登录成功,加载效果也消失
+        loading.value = false
+    } catch (error) {
+        console.log('error')
+        //登陆失败加载效果消失
+        loading.value = false
+        //登录失败的提示信息
+        ElNotification({
+            type: 'error',
+            message: (error as Error).message,
+        })
+    }
+}
 </script>
 
 <style lang="scss" scoped>

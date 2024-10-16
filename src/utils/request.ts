@@ -7,10 +7,8 @@ let request = axios.create({
 })
 //**请求拦截器**
 request.interceptors.request.use(config => {
-    console.log('1',config)
     //携带公共参数
     config.headers.token='123';
-    console.log('2', config)
     // config配置对象 headers属性请求头，常用于给服务器端添加公共参数
     // 返回配置对象
     return config;
