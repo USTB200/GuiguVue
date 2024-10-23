@@ -5,7 +5,7 @@ el-col是24份的，在此左右分为了12份。我们在右边放置我们的�
         <el-row>
             <el-col :span="12" :xs="0"></el-col>
             <el-col :span="12" :xs="24">
-                <el-form class="login_form" :model="loginForm" :rules="rules" ref="" loginForms>
+                <el-form class="login_form" :model="loginForm" :rules="rules" ref="loginForms">
                     <h1>Hello</h1>
                     <h2>欢迎来到硅谷甄选</h2>
                     <!-- Form 组件提供了表单验证的功能，只需为 rules 属性传入约定的验证规则，
